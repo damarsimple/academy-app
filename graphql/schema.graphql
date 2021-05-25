@@ -1,0 +1,53 @@
+"A date String with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime String with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Lecturer {
+
+    name: String
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+
+    nidn: Int
+    doctor_degree: String
+    magister_degree: String
+    academic_job: String
+    specialty: String
+    education_certificate_Int: String
+    is_ps_competent: Boolean
+
+}
+
+type Mutation {
+  createLecturer(input: CreateLecturerInput! @spread): Lecturer! @create
+}
+
+input CreateLecturerInput {
+  name: String!
+  nidn: Int
+  doctor_degree: String
+  magister_degree: String
+  specialty: String
+  education_certificate_Int: String
+  is_ps_competent: Boolean
+}
+
+
+type Query {
+    users: [User!]! @paginate(defaultCount: 10)
+    lecturers: [Lecturer!]! @paginate(defaultCount: 10)
+    user(id: ID @eq): User @find
+}
