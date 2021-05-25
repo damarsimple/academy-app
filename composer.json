@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "mll-lab/graphql-php-scalars": "^4",
         "mll-lab/laravel-graphql-playground": "^2.5",
         "nuwave/lighthouse": "^5.12"
     },
@@ -49,7 +50,8 @@
             "@php artisan key:generate --ansi"
         ],
         "remigrate": [
-            "@php artisan migrate:refresh"
+            "@php artisan migrate:fresh",
+            "@php artisan data:fake"
         ]
     },
     "extra": {

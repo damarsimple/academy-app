@@ -19,16 +19,23 @@ class LecturerFactory extends Factory
      *
      * @return array
      */
+
+    private function getOrNull($any = '', $default = null){
+        return mt_rand(0,10) % 2 == 0 ? $any : $default;
+    }
     public function definition()
     {
         return [
             'name' => $this->faker->name(),
-            'nidn' => mt_rand(0, 10),
-            'doctor_degree' => 'S3 WEABOISME',
-            'magister_degree' => 'S2 Tamvanisme',
-            'specialty' => 'Tamvan',
-            'education_certificate_number' => '1123123',
-            'is_ps_competent' => mt_rand(1, 5) % 2 == 0
+            'nidn' => mt_rand(1000000000,9999999999),
+            'doctor_degree' => $this->getOrNull('S3 Master Komputer'),
+            'magister_degree' => $this->getOrNull('S2 Master Komputer'),
+            'bachelor_degree' => $this->getOrNull('S1 Master Komputer'),
+            'education_certificate_number' => mt_rand(1000000000,9999999999),
+            'academic_job' => $this->getOrNull('Asisten Keahlian Tamvan'),
+            'specialty' => $this->getOrNull('Supply Chain Management'),
+            'certificate_competent_name' => $this->getOrNull(' SAP University Alliance, Jakarta SAP Fundamental Training (Training for Trainers)'),
+            'is_ps_competent' => mt_rand(0,5) % 2 == mt_rand(0,1)
         ];
     }
 }
