@@ -66,4 +66,4 @@ jobs:
       - name: Deploy to PRODUCTION Server
         env:
           DOT_ENV: ${{ secrets.DOT_ENV_PRODUCTION }}
-        run: dep deploy production --tag=${{ env.GITHUB_REF }} -vvv
+        run: dep deploy production -vvv
