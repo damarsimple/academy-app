@@ -40,8 +40,6 @@ host('api.dslab.id')
     ->user('root')
     ->set('deploy_path', '/var/www/academy-be');
 
-after('deploy:failed', 'deploy:unlock');
-
 desc('Deploy the application');
 
 task('deploy', [
@@ -60,6 +58,5 @@ task('deploy', [
     'artisan:migrate',
     'artisan:queue:restart',
     'deploy:symlink',
-    'deploy:unlock',
     'cleanup',
 ]);
