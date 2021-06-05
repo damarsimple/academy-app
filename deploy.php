@@ -24,6 +24,7 @@ add('writable_dirs', []);
 // Hosts
 
 host('api.dslab.id')
+    ->setHostname('47.241.128.75')
     ->setRemoteUser('root')
     ->set('deploy_path', '/var/www/academy-be');
 
