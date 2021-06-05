@@ -17,9 +17,9 @@ class CreateStudentCoursesTable extends Migration
             $table->id();
             $table->float('ipk')->nullable();
             $table->timestamp('finish_at')->nullable();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('semester_id')->constrained();
-            $table->foreignId('course_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('semester_id')->constrained()->onDelete('cascade');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

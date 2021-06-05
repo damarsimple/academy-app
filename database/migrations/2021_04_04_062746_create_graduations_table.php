@@ -15,7 +15,7 @@ class CreateGraduationsTable extends Migration
     {
         Schema::create('graduations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->boolean('has_job')->default(false);
             $table->timestamp('has_job_at')->nullable();
             $table->boolean('is_job_related');

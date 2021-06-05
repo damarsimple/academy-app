@@ -16,7 +16,7 @@ class CreateStudentSelectionsTable extends Migration
         Schema::create('student_selections', function (Blueprint $table) {
             $table->id();
             $table->year('year');
-            $table->foreignId('student_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->boolean('is_accepted');
             $table->boolean('is_regular');
             $table->boolean('is_transfer');

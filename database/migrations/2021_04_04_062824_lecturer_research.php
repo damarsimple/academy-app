@@ -15,8 +15,8 @@ class LecturerResearch extends Migration
     {
         Schema::create('lecturer_research', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lecturer_id')->constrained();
-            $table->foreignId('research_id')->constrained();
+            $table->foreignId('lecturer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('research_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

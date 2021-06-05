@@ -15,7 +15,7 @@ class CreateRecognitionsTable extends Migration
     {
         Schema::create('recognitions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lecturer_id')->constrained();
+            $table->foreignId('lecturer_id')->constrained()->onDelete('cascade');
             $table->string('proof');
             $table->string('specialty');
             $table->boolean('is_international')->default(false);

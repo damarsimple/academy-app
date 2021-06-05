@@ -15,8 +15,8 @@ class StudentSurvey extends Migration
     {
         Schema::create('student_survey', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('survey_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('survey_id')->constrained()->onDelete('cascade');
             $table->char('code');
             $table->timestamps();
         });

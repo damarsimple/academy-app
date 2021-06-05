@@ -17,8 +17,8 @@ class CreateStudentResearchActivitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->year('year');
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('research_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('research_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

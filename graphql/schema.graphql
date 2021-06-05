@@ -24,12 +24,15 @@ type Lecturer {
     magister_degree: String
     academic_job: String
     specialty: String
-    education_certificate_Int: String
+    education_certificate_number: String
     is_ps_competent: Boolean
 }
 
 type Mutation {
     createLecturer(input: CreateLecturerInput! @spread): Lecturer! @create
+    updateLecturer(id: ID!, input: CreateLecturerInput! @spread): Lecturer!
+        @update
+    deleteLecturers(id: [ID!]!): [Lecturer!]! @delete
 }
 
 input CreateLecturerInput {
@@ -38,29 +41,31 @@ input CreateLecturerInput {
     doctor_degree: String
     magister_degree: String
     specialty: String
-    education_certificate_Int: String
+    academic_job: String
+    education_certificate_number: String
     is_ps_competent: Boolean
 }
 
 type Query {
     users: [User!]! @paginate(type: CONNECTION)
+    user(id: ID @eq): User @find
+    lecturer(id: ID @eq): Lecturer @find
     lecturers(
         where: _
             @whereConditions(
                 columns: [
-                    "name",
-                    "ID",
-                    "created_at",
-                    "updated_at",
-                    "nidn",
-                    "doctor_degree",
-                    "magister_degree",
-                    "academic_job",
-                    "specialty",
-                    "education_certificate_Int",
-                    "is_ps_competent",
+                    "name"
+                    "ID"
+                    "created_at"
+                    "updated_at"
+                    "nidn"
+                    "doctor_degree"
+                    "magister_degree"
+                    "academic_job"
+                    "specialty"
+                    "education_certificate_number"
+                    "is_ps_competent"
                 ]
             )
     ): [Lecturer!]! @paginate(type: CONNECTION)
-    user(id: ID @eq): User @find
 }

@@ -15,8 +15,8 @@ class PkmStudent extends Migration
     {
         Schema::create('pkm_student', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('pkm_id')->constrained();
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('pkm_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

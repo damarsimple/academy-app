@@ -15,9 +15,9 @@ class CreateCourseResearchIntegrationsTable extends Migration
     {
         Schema::create('course_research_integrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('research_id')->constrained();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('course_id')->constrained();
+            $table->foreignId('research_id')->constrained()->onDelete('cascade');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->string('integration_type');
             $table->year('year');
             $table->timestamps();
