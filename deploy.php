@@ -53,3 +53,9 @@ task('data:fake', function () {
 });
 
 after('artisan:migrate:fresh', 'data:fake');
+
+task('key:generate', function () {
+    run('cd {{release_path}} && php artisan config:clear && php artisan key:generate');
+});
+
+after('artisan:migrate:fresh', 'data:fake');
