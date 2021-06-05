@@ -34,8 +34,15 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+task('install:dependancy', function () {
+    run('cd {{release_path}} && composer install');
+});
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
+
+
+before('artisan:migrate:fresh', 'install:dependancy');
 
 // Migrate database before symlink new release.
 
