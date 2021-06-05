@@ -77,7 +77,7 @@ class CreateFakeData extends Command
 
                 $graduation->has_job = mt_rand(0, 10) % 2 == 0;
 
-                $graduation->has_job_at = $graduation->has_job ? $now->addMonth(mt_rand(1, 20)) : null;
+                $graduation->has_job_at = $graduation->has_job ? $now->addMonth(mt_rand(1, 10)) : null;
 
                 $graduation->is_job_related = mt_rand(0, 10) % 2 == 0;
 
