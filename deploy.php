@@ -5,7 +5,11 @@ namespace Deployer;
 require 'recipe/laravel.php';
 require 'recipe/rsync.php';
 
-set('application', 'My App');
+set('bin/composer', function () {
+    return '/usr/bin/php7.4 /usr/bin/composer';
+});
+
+set('application', 'Academy');
 set('ssh_multiplexing', true);
 
 set('rsync_src', function () {
@@ -31,10 +35,10 @@ task('deploy:secrets', function () {
 });
 
 host('api.dslab.id')
-  ->hostname('47.241.128.75')
-  ->stage('production')
-  ->user('root')
-  ->set('deploy_path', '/var/www/academy-be');
+    ->hostname('47.241.128.75')
+    ->stage('production')
+    ->user('root')
+    ->set('deploy_path', '/var/www/academy-be');
 
 after('deploy:failed', 'deploy:unlock');
 
