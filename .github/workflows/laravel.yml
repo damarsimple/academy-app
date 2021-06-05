@@ -34,7 +34,7 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Migrate Database and Execute fake data seeding
       run: |
-          php artisan migrate:fresh
+          php artisan migrate
           php artisan data:fake
       env: 
          DB_DATABASE: test_db
