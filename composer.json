@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "deployer/deployer": "^7.0",
+        "fakerphp/faker": "^1.9.1",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -18,7 +19,7 @@
         "mll-lab/graphql-php-scalars": "^4",
         "mll-lab/laravel-graphql-playground": "^2.5",
         "nuwave/lighthouse": "^5.12",
-        "fakerphp/faker": "^1.9.1"
+        "protoqol/prequel": "^1.22"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
