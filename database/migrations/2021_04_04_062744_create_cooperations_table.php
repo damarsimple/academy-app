@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCooperationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('cooperations', function (Blueprint $table) {
@@ -29,11 +24,6 @@ class CreateCooperationsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('cooperations');

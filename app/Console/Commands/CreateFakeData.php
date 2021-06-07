@@ -17,11 +17,9 @@ use App\Models\StudentCourse;
 use App\Models\StudentSelection;
 use App\Models\Studyprogram;
 use App\Models\Survey;
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\DB;
 
 class CreateFakeData extends Command
 {
