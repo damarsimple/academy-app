@@ -28,6 +28,22 @@ type Lecturer {
     is_ps_competent: Boolean
 }
 
+type Recognition {
+    name: String
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+
+    lecturer: Lecturer! @belongsTo
+    proof: String!
+    specialty: String!
+    is_international: Boolean!
+    is_national: Boolean!
+    is_local: Boolean!
+    start_at: Boolean!
+    finish_at: Boolean!
+}
+
 type Mutation {
     createLecturer(input: CreateLecturerInput! @spread): Lecturer! @create
     updateLecturer(id: ID!, input: CreateLecturerInput! @spread): Lecturer!
