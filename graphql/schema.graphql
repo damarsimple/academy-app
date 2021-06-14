@@ -296,7 +296,7 @@ type Query {
     user(id: ID @eq): User @find
     lecturer(id: ID @eq): Lecturer @find
     achievement(id: ID @eq): Achievement @find
-    achievement(
+    achievements(
         where: _
             @whereConditions(
                 columns: [
