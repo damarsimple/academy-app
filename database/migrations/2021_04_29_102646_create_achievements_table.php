@@ -17,7 +17,7 @@ class CreateAchievementsTable extends Migration
             $table->boolean('is_academic');
             $table->longText('description');
             $table->timestamp('start_at')->nullable();
-            $table->timestamp('finish_at')->nullable();
+            $table->timestamp('start_at')->nullable();
             $table->timestamps();
         });
     }
