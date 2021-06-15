@@ -79,23 +79,6 @@ type Student {
     graduated_at: String
 }
 
-type Student {
-    name: String
-    id: ID!
-    created_at: DateTime!
-    updated_at: DateTime!
-
-    Studyprogram: Studyprogram @belongsTo
-    type: String
-    title: String!
-    proof: String!
-    benefit: String!
-    institution_name: String!
-    specialty: String!
-    is_international: Boolean!
-    is_national: Boolean!
-    is_local: Boolean!
-}
 
 type Graduation {
     id: ID!
