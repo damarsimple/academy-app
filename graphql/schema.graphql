@@ -45,7 +45,6 @@ type Research {
 }
 
 type Recognition {
-    name: String
     id: ID!
     created_at: DateTime!
     updated_at: DateTime!
@@ -78,7 +77,6 @@ type Student {
     is_graduated: Boolean!
     graduated_at: String
 }
-
 
 type Graduation {
     id: ID!
@@ -502,7 +500,7 @@ type Query {
             @whereConditions(
                 columns: ["name", "id", "created_at", "updated_at", "plan"]
             )
-    ): [Studyprogram!]! @paginate(type: CONNECTION)
+    ): [Survey!]! @paginate(type: CONNECTION)
     lecturers(
         where: _
             @whereConditions(
@@ -521,4 +519,6 @@ type Query {
                 ]
             )
     ): [Lecturer!]! @paginate(type: CONNECTION)
+
+    student_selections: [StudentSelection!]! @paginate(type: CONNECTION)
 }
