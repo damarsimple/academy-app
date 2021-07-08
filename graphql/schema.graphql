@@ -65,7 +65,7 @@ type Student {
     created_at: DateTime!
     updated_at: DateTime!
 
-    Studyprogram: Studyprogram @belongsTo
+    studyprogram: Studyprogram @belongsTo
     studentcourses: [StudentCourse] @hasMany
     graduation: Graduation @hasOne
     nim: String!
