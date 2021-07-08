@@ -460,6 +460,7 @@ type Query {
                     "is_ps_competent"
                 ]
             )
+        is_foreign: Boolean
     ): [Student!]! @paginate(type: CONNECTION)
     student_course(id: ID @eq): StudentCourse @find
     student_courses(
