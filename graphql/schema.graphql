@@ -234,7 +234,7 @@ type StudentCourse {
     ipk: Float
     finish_at: String
     student: Student! @belongsTo
-    semester_id: Semester! @belongsTo
+    semester: Semester! @belongsTo
     course: Course! @belongsTo
     is_finish: Boolean!
 }
@@ -255,7 +255,11 @@ type Achievement {
 }
 
 type Mutation {
+    #Create
     createLecturer(input: CreateLecturerInput! @spread): Lecturer! @create
+    createAchievement(input: CreateAchievementInput! @spread): Achievement!
+        @create
+
     updateLecturer(id: ID!, input: CreateLecturerInput! @spread): Lecturer!
         @update
     deleteLecturers(id: [ID!]!): [Lecturer!]! @delete
@@ -270,6 +274,134 @@ input CreateLecturerInput {
     academic_job: String
     education_certificate_number: String
     is_ps_competent: Boolean
+}
+
+input CreateAchievementInput {
+    name: String!
+
+    is_local: Boolean
+    is_national: Boolean
+    is_international: Boolean
+    is_academic: Boolean
+    description: String
+    start_at: String
+    finish_at: String
+}
+
+input CreateStudentInput {
+    studyprogram_id: ID
+    studentcourses: [ID]
+    graduation: Graduation @hasOne
+    nim: String!
+    name: String!
+    specialty: String!
+    is_active: Boolean!
+    is_foreign: Boolean!
+    is_fulltime: Boolean!
+    is_graduated: Boolean!
+    graduated_at: String
+}
+
+input CreateGraduationInput {
+    student_id: ID!
+    job_type: String!
+    has_job: Boolean!
+    has_job_at: String
+    is_job_related: Boolean!
+    year: Int!
+    start_at: Int!
+    finish_at: Int!
+}
+
+input CreateCooperationInput {
+    title: String
+    type: String
+    benefit: String!
+    institution_name: String!
+    is_international: Boolean!
+    is_national: Boolean!
+    is_local: Boolean!
+    start_at: Int!
+    finish_at: Int!
+    proof: String!
+}
+
+type CreateCourseInput {
+    name: String
+    semesters: [Semester]! @belongsToMany
+    competency: String!
+    code: String!
+    responsi_sks_weight: Float!
+    seminar_sks_weight: Float!
+    practice_sks_weight: Float!
+    credit_to_hours_conversion: Float!
+    must_attitude: Boolean!
+    must_knowledge: Boolean!
+    must_skills: Boolean!
+    must_specialty_skills: Boolean!
+    lesson_plan_document: String!
+    organizing_unit: String!
+}
+
+input UpsertStudentCourseInputHasMany {
+    upsert: [UpsertStudentCourseInput!]
+    delete: [ID!]
+    connect: [ID!]
+    disconnect: [ID!]
+}
+
+input UpsertStudentCourseInput {
+    ipk: Float
+    finish_at: String
+    semester_id: ID!
+    course_id: ID!
+    is_finish: Boolean!
+}
+
+input CreateArticleInput {
+    title: String!
+    education_certificate_number: String
+    lecturer_id: ID!
+}
+
+input CreateArticleInput {
+    lecturer_id: ID!
+    proof: String!
+    specialty: String!
+    is_international: Boolean!
+    is_national: Boolean!
+    is_local: Boolean!
+    start_at: Int!
+    finish_at: Int!
+}
+
+input CreateResearchInput {
+    title: String!
+    lecturers: CreateLecturerBelongsToMany
+    student: CreateStudentBelongsToMany
+    theme: String!
+    year: String!
+    information: String
+}
+
+input CreateLecturerBelongsToMany {
+    upsert: [UpsertLecturerInput!]
+    connect: [ID!]
+    sync: [ID!]
+}
+
+input UpsertLecturerInput {
+    id: ID!
+}
+
+input CreateStudentBelongsToMany {
+    upsert: [UpsertStudentInput!]
+    connect: [ID!]
+    sync: [ID!]
+}
+
+input UpsertStudentInput {
+    id: ID!
 }
 
 type Query {
