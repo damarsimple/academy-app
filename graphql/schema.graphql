@@ -291,7 +291,7 @@ input CreateAchievementInput {
 input CreateStudentInput {
     studyprogram_id: ID
     studentcourses: [ID]
-    graduation: Graduation @hasOne
+    # graduation: Graduation @hasOne
     nim: String!
     name: String!
     specialty: String!
@@ -409,249 +409,35 @@ type Query {
     user(id: ID @eq): User @find
     lecturer(id: ID @eq): Lecturer @find
     achievement(id: ID @eq): Achievement @find
-    achievements(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "is_local"
-                    "is_national"
-                    "is_academic"
-                    "description"
-                    "start_at"
-                    "start_at"
-                ]
-            )
-    ): [Achievement!]! @paginate(type: CONNECTION)
+    achievements: [Achievement!]! @paginate(type: CONNECTION)
     article(id: ID @eq): Article @find
-    articles(
-        where: _
-            @whereConditions(
-                columns: [
-                    "title"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "lecturer_id"
-                ]
-            )
-    ): [Article!]! @paginate(type: CONNECTION)
+    articles: [Article!]! @paginate(type: CONNECTION)
     cooperation(id: ID @eq): Cooperation @find
-    cooperations(
-        where: _
-            @whereConditions(
-                columns: [
-                    "title"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "benefit"
-                    "institution_name"
-                    "is_international"
-                    "is_national"
-                    "is_local"
-                    "start_at"
-                    "finish_at"
-                    "proof"
-                ]
-            )
-    ): [Cooperation!]! @paginate(type: CONNECTION)
+    cooperations: [Cooperation!]! @paginate(type: CONNECTION)
     course(id: ID @eq): Course @find
-    courses(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "responsi_sks_weight"
-                    "seminar_sks_weight"
-                    "practice_sks_weight"
-                    "credit_to_hours_conversion"
-                    "must_attitude"
-                    "must_knowledge"
-                    "must_skills"
-                    "must_specialty_skills"
-                    "lesson_plan_document"
-                    "organizing_unit"
-                ]
-            )
-    ): [Course!]! @paginate(type: CONNECTION)
+    courses: [Course!]! @paginate(type: CONNECTION)
     course_research_integration(id: ID @eq): CourseResearchIntegration @find
-    course_research_integrations(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "research_id"
-                    "student_id"
-                    "course_id"
-                    "integration_type"
-                    "year"
-                ]
-            )
-    ): [CourseResearchIntegration!]! @paginate(type: CONNECTION)
+    course_research_integrations: [CourseResearchIntegration!]!
+        @paginate(type: CONNECTION)
     graduation(id: ID @eq): Graduation @find
-    graduations(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "student_id"
-                    "has_job"
-                    "has_job_at"
-                    "is_job_related"
-                    "job_type"
-                    "year"
-                ]
-            )
-    ): [Graduation!]! @paginate(type: CONNECTION)
+    graduations: [Graduation!]! @paginate(type: CONNECTION)
     pkm(id: ID @eq): Pkm @find
-    pkms(
-        where: _
-            @whereConditions(
-                columns: [
-                    "title"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "theme"
-                    "year"
-                    "integration_type"
-                ]
-            )
-    ): [Pkm!]! @paginate(type: CONNECTION)
+    pkms: [Pkm!]! @paginate(type: CONNECTION)
     recognition(id: ID @eq): Recognition @find
-    recognitions(
-        where: _
-            @whereConditions(
-                columns: [
-                    "title"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "lecturer_id"
-                    "proof"
-                    "specialty"
-                    "is_international"
-                    "is_national"
-                    "is_local"
-                    "start_at"
-                    "finish_at"
-                ]
-            )
-    ): [Recognition!]! @paginate(type: CONNECTION)
+    recognitions: [Recognition!]! @paginate(type: CONNECTION)
     research(id: ID @eq): Research @find
-    researches(
-        where: _
-            @whereConditions(
-                columns: [
-                    "title"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "lecturer_id"
-                    "theme"
-                    "year"
-                    "information"
-                ]
-            )
-    ): [Research!]! @paginate(type: CONNECTION)
+    researches: [Research!]! @paginate(type: CONNECTION)
     semester(id: ID @eq): Semester @find
-    semesters(
-        where: _
-            @whereConditions(
-                columns: ["name", "id", "created_at", "updated_at", "year"]
-            )
-    ): [Research!]! @paginate(type: CONNECTION)
+    semesters: [Research!]! @paginate(type: CONNECTION)
     student(id: ID @eq): Student @find
-    students(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "nidn"
-                    "doctor_degree"
-                    "magister_degree"
-                    "academic_job"
-                    "specialty"
-                    "education_certificate_number"
-                    "is_ps_competent"
-                ]
-            )
-        is_foreign: Boolean
-    ): [Student!]! @paginate(type: CONNECTION)
+    students: [Student!]! @paginate(type: CONNECTION)
     student_course(id: ID @eq): StudentCourse @find
-    student_courses(
-        where: _
-            @whereConditions(
-                columns: [
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "finish_at"
-                    "student_id"
-                    "semester_id"
-                    "ipk"
-                    "course_id"
-                ]
-            )
-    ): [StudentCourse!]! @paginate(type: CONNECTION)
+    student_courses: [StudentCourse!]! @paginate(type: CONNECTION)
     studyprogram(id: ID @eq): Studyprogram @find
-    studyprograms(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "type"
-                    "accreditation"
-                    "code"
-                    "expired_at"
-                    "lecturer_id"
-                ]
-            )
-    ): [Studyprogram!]! @paginate(type: CONNECTION)
+    studyprograms: [Studyprogram!]! @paginate(type: CONNECTION)
     survey(id: ID @eq): Survey @find
-    surveys(
-        where: _
-            @whereConditions(
-                columns: ["name", "id", "created_at", "updated_at", "plan"]
-            )
-    ): [Survey!]! @paginate(type: CONNECTION)
-    lecturers(
-        where: _
-            @whereConditions(
-                columns: [
-                    "name"
-                    "id"
-                    "created_at"
-                    "updated_at"
-                    "nidn"
-                    "doctor_degree"
-                    "magister_degree"
-                    "academic_job"
-                    "specialty"
-                    "education_certificate_number"
-                    "is_ps_competent"
-                ]
-            )
-    ): [Lecturer!]! @paginate(type: CONNECTION)
+    surveys: [Survey!]! @paginate(type: CONNECTION)
+    lecturers: [Lecturer!]! @paginate(type: CONNECTION)
 
     student_selections: [StudentSelection!]! @paginate(type: CONNECTION)
 }
